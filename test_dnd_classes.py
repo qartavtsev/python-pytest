@@ -1,3 +1,4 @@
+import allure
 import pytest
 import random
 from dnd_classes import Person
@@ -5,12 +6,11 @@ from dnd_classes import Person
 # Создадим список типов ошибок, которые могут быть случайно выбраны
 ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
 
-
 @pytest.mark.parametrize("damage, expected", [
     (1, 9),
     (2, 8),
     (3, 7),
-    (4, 8),
+    (4, 8), # 4th test already failed
 ])
 def test_take_true_damage(damage, expected):
     alex_person = Person('Alex')
