@@ -61,3 +61,11 @@ jobs:
           OS: ${{ github.event.inputs.OS}}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
           ALLURE_RESULTS: "allure-results"
+      
+      - name: Generate Allure report
+        run: |
+          allure serve ALLURE_RESULTS
+      
+      - name: Publish results to Allure TestOps
+        run: |
+          allure --server ALLURE_ENDPOINT --token ALLURE_TOKEN publish ALLURE_RESULTS
