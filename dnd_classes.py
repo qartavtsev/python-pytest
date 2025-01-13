@@ -10,7 +10,7 @@ class Person:
         self.mdef = 2
         self.pdef = 3
 
-    def take_true_damage(self,count):
+    def take_true_damage(self, count):
         # take true damage
         self.hp = self.hp - count
         pass
@@ -39,3 +39,5 @@ if __name__ == '__main__':
     alex_person = Person('Alex')
     print(alex_person.name)
     print(alex_person)
+    alex_person.take_true_damage(1)
+    print(alex_person.hp)
