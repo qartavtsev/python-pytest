@@ -23,6 +23,14 @@ def test_take_true_damage(damage, expected):
         allure.attach(f'Создан персонаж с именем {alex_person.name} и у него {alex_person.hp} очков здоровья.', name='Лог операции', attachment_type=allure.attachment_type.TEXT)
         assert alex_person.hp == 10
 
+    # Добавляем шаг 3 и 4, с ожидаемым результатом
+    with allure.step("Шаг 3: Выполняем действие"):
+        result = 10 / 2
+
+    with allure.step("Шаг 4: Ожидаемый результат - результат равен 5"):
+        expected_result = 5
+        assert result == expected_result, f"Ожидали: {expected_result}, получили: {result}"
+
     # Вставляем случайную ошибку для симуляции ошибки, это приведет к сломанному тесту
     if random.random() < 0.2:  # 20% шанс на ошибку
         error_type = random.choice(ERROR_TYPES)  # случайно выбираем тип ошибки
