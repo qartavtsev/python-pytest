@@ -12,6 +12,7 @@ ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
     (3, 7),
     (4, 8), # 4th test already failed
 ])
+@allure.step("Шаг: тест")
 def test_take_true_damage(damage, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг1: создание персонажа'):
