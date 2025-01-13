@@ -32,7 +32,7 @@ def test_take_true_damage(damage, expected):
             expected_result = 5
             assert result == expected_result, f"Ожидали: {expected_result}, получили: {result}"
 
-    # Вставляем случайную ошибку для симуляции ошибки, это приведет к сломанному тесту
+    # Вставляем случайную ошибку, это приведет к сломанному тесту
     if random.random() < 0.2:  # 20% шанс на ошибку
         error_type = random.choice(ERROR_TYPES)  # случайно выбираем тип ошибки
         raise error_type(f"Случайная ошибка: {error_type.__name__}")
