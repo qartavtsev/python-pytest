@@ -1,10 +1,12 @@
+from logging import CRITICAL
+
 import allure
 import pytest
 import random
 from dnd_classes import Person
 
 # Создадим список типов ошибок, которые могут быть случайно выбраны
-ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
+ERROR_TYPES = [IndexError, ValueError, TypeError, KeyError]
 
 @pytest.mark.parametrize('damage, expected', [
     (1, 9),
