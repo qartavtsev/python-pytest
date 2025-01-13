@@ -13,11 +13,17 @@ ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
     (4, 8), # 4th test already failed
 ])
 def test_take_true_damage(damage, expected):
+    # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг1: создание персонажа'):
         alex_person = Person('Alex')
         assert alex_person.name == 'Alex'
 
-    # Вставляем случайную ошибку для симуляции фолта
+    # Добавляем шаг 2, с вложением текст
+    with allure.step('Шаг 2: Выполнение операции'):
+        allure.attach(f'Создан персонаж с именем {alex_person.name} и у него {alex_person.hp} очков здоровья.', name='Лог операции', attachment_type=allure.attachment_type.TEXT)
+        assert alex_person.hp == 10
+
+    # Вставляем случайную ошибку для симуляции ошибки, это приведет к сломанному тесту
     if random.random() < 0.2:  # 20% шанс на ошибку
         error_type = random.choice(ERROR_TYPES)  # случайно выбираем тип ошибки
         raise error_type(f"Случайная ошибка: {error_type.__name__}")
