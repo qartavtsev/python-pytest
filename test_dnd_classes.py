@@ -31,8 +31,8 @@ def test_take_true_damage(damage, expected):
         assert alex_person.hp == 10
 
     # Добавляем шаг 3, с ожидаемым результатом
-    with allure.step('Шаг 3.1: Выполняем действие'):
-        with allure.step('Выполняем действие деление'):
+    with allure.step('Шаг 3: Выполняем действие'):
+        with allure.step('Шаг 3.1: Выполняем действие деление'):
             result = 10 / 2
 
         with allure.step('Шаг 3.2: Проверяем действие'):
