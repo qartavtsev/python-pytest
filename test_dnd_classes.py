@@ -13,7 +13,9 @@ ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
     (4, 8), # 4th test already failed
 ])
 def test_take_true_damage(damage, expected):
-    alex_person = Person('Alex')
+    with allure.step('Шаг1: создание персонажа'):
+        alex_person = Person('Alex')
+        assert alex_person.name == 'Alex'
 
     # Вставляем случайную ошибку для симуляции фолта
     if random.random() < 0.2:  # 20% шанс на ошибку
