@@ -20,7 +20,7 @@ def test_take_true_damage(damage, expected):
             allure.attach(
                 image_file.read(),
                 name="ТестОпс Лого",
-                attachment_type=allure.attachment_type.JPEG
+                attachment_type=allure.attachment_type.JPG
             )
         alex_person = Person('Alex')
         assert alex_person.name == 'Alex'
