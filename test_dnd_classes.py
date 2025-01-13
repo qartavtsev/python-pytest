@@ -15,7 +15,7 @@ ERROR_TYPES = [AssertionError, ValueError, TypeError, KeyError]
 #@allure.step("Шаг: тест")
 def test_take_true_damage(damage, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
-    with allure.step('Шаг1: Создание персонажа'):
+    with allure.step('Шаг 1: Создание объекта класса персонаж с именем "Alex".'):
         with open("img/logo.jpeg", "rb") as image_file:
             allure.attach(
                 image_file.read(),
@@ -24,6 +24,55 @@ def test_take_true_damage(damage, expected):
             )
         alex_person = Person('Alex')
         assert alex_person.name == 'Alex'
+
+    # Добавляем шаг 2, с вложением текст
+    with allure.step('Шаг 2: Проверяем количество базовых очков здоровья.'):
+        allure.attach(f'Создан персонаж с именем {alex_person.name} и у него {alex_person.hp} очков здоровья.', name='Лог операции', attachment_type=allure.attachment_type.TEXT)
+        assert alex_person.hp == 10
+
+    # Добавляем шаг 3, с ожидаемым результатом
+    with allure.step('Шаг 3: Проверяем наносистся ли урон объекту.'):
+        with allure.step('Шаг 3.1: Наносим чистый урон.'):
+            expected_result = alex_person.hp - 1
+            if random.random() < 0.2:  # 20% шанс на ошибку
+                alex_person.take_true_damage(1)
+            result = alex_person.hp
+        with allure.step('Шаг 3.2: Проверяем действие'):
+            allure.attach(f'Персонажу с именем {alex_person.name} нанесли урон {damage} и у него осталось {alex_person.hp} очков здоровья.',
+                          name='Лог операции', attachment_type=allure.attachment_type.TEXT)
+
+            assert result == expected_result, f'Crit Error: Чистый урон не прошел, неизменяются данные объекта {alex_person}.'
+    with allure.step('Шаг 4: Шаг со случайной ошибкой'):
+        # Вставляем случайную ошибку, это приведет к сломанному тесту
+        if random.random() < 0.2:  # 20% шанс на ошибку
+            error_type = random.choice(ERROR_TYPES)  # случайно выбираем тип ошибки
+            raise error_type(f'Случайная ошибка: {error_type.__name__}')
+
+        else:
+            with allure.step('Шаг 5: проверка реальности'):
+                alex_person.take_true_damage(damage)
+                assert alex_person.hp == expected, f'Ожидалось {expected}, но получено {alex_person.hp}'
+
+@pytest.mark.parametrize('name, expected', [
+    ('Alex', 'Alex'),
+    (123, 123),
+    ('Leo', 'leo'),
+    ('_Leo', 'Leo')
+])
+@allure.epic("TestOps")
+@allure.feature("BackEnd")
+@allure.story("Server")
+#@allure.id('')
+def test_nameing(name, expected):
+    # добавляем первый шаг, создание персонажа и проверяем что он создался
+    with allure.step('Шаг 1: Создание персонажа с корректным именем.'):
+        with open("img/logo.jpeg", "rb") as image_file:
+            allure.attach(
+                image_file.read(),
+                name="ТестОпс Лого",
+                attachment_type=allure.attachment_type.JPG
+            )
+        alex_person = Person(name)
 
     # Добавляем шаг 2, с вложением текст
     with allure.step('Шаг 2: Выполнение операции'):
@@ -48,3 +97,6 @@ def test_take_true_damage(damage, expected):
             with allure.step('Шаг 5: проверка реальности'):
                 alex_person.take_true_damage(damage)
                 assert alex_person.hp == expected, f'Ожидалось {expected}, но получено {alex_person.hp}'
+
+# def test_add_some_reasons(damage):
+#    pass
