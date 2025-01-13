@@ -1,6 +1,14 @@
 name: Testops
 
 on:
+  # Запускать workflow на коммитах и pull request в ветку main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      
   workflow_dispatch:
     inputs:
       ALLURE_JOB_RUN_ID:
