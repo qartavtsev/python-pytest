@@ -1,5 +1,3 @@
-from logging import CRITICAL
-
 import allure
 import pytest
 import random
