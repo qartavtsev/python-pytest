@@ -1,6 +1,3 @@
-from operator import length_hint
-
-
 class Person:
     # create class
     def __init__(self, name):
