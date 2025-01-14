@@ -6,7 +6,7 @@ import pytest
 # записываем описание теста в отдельную переменную, чтобы потом можно было добавить в нее динамическую часть
 description_text = 'Этот тест проверяет корректность добавления описания в виде текста.'
 description_html = '''
-    Тест проверяет описание с разметкой <b>HTML</b>/n
+    Тест проверяет описание с разметкой <b>HTML</b>\n
     <h2>Сценарий:</h2>
     <ul>
     <li>Не нумерованный список, пункт 1</li>
@@ -24,7 +24,7 @@ def test_add_description_text_01():
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
-@allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
+@allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
 def test_add_description_text_with_dynamic_01():
     dymanic_text = 'Это динамическая часть описания, она меняеться от теста к тесту.\nТекст из теста 02.'
     allure.dynamic.description(description_text + f'\n{dymanic_text}')
@@ -47,7 +47,7 @@ def test_add_description_text_02():
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
-@allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
+@allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
 def test_add_description_text_with_dynamic_02():
     '''
     Это описание теста сделано без использования декоратора.
