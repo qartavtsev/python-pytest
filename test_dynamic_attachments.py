@@ -13,7 +13,7 @@ import pytest
     ('Car', 4),
     ('Bike', 2)
         ])
-def test_add_dynamic_att(parametr1, parametr2):
+def test_dynamic_att(parametr1, parametr2):
     with allure.step('Шаг 1: Создание вложения картинки.'):
         allure.attach.file(os.path.join('img', 'logo.jpeg'), name='JPG_example.jpg', attachment_type=allure.attachment_type.JPG)
 
