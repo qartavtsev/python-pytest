@@ -1,9 +1,7 @@
 import json
 import os
-
 import allure
 import pytest
-import random
 
 # в данном примере будем тестировать динамические вложения разных типов в шаги ТестОпс
 
