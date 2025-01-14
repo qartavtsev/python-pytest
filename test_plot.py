@@ -15,6 +15,16 @@ import pytest
     ('cos_x', np.cos)
         ])
 def test_plot_generator(fucn_name,func_deal):
+    # Установка описания теста с динамическими переменными
+    description = f"""
+        Тест проверяет построение графика {fucn_name}.
+        В диапазоне от 0 до 2π.
+        Ожидаемый результат: график построен.
+        """
+    allure.dynamic.description(description)
+    # Динамическая ссылка
+    allure.dynamic.link("https://example.com/dynamic-link", name="Динамическая ссылка")
+
     with allure.step('Шаг 1: Генерируем данные для оси X.'):
         x = np.linspace(0, 2 * np.pi, 100)  # генерируем значения от 0 до 2π
 
@@ -40,7 +50,7 @@ def test_plot_generator(fucn_name,func_deal):
         # Прикрепляем график как вложение в Allure
         allure.attach(
             buf.read(),
-            name=f'График {fucn_name}',
+            name=f'График_{fucn_name}.png',
             attachment_type=allure.attachment_type.PNG
         )
         buf.close()
