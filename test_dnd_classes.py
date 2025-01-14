@@ -5,7 +5,9 @@ import pytest
 import random
 from dnd_classes import Person
 
-# Создадим список типов ошибок, которые могут быть случайно выбраны
+# в данном примере будем тестировать класс Person
+
+# создадим список типов ошибок, которые могут быть случайно выбраны
 ERROR_TYPES = [IndexError, ValueError, TypeError, KeyError]
 
 @pytest.mark.parametrize('damage, expected', [
@@ -21,7 +23,7 @@ def test_take_true_damage(damage, expected):
         with open("img/logo.jpeg", "rb") as image_file:
             allure.attach(
                 image_file.read(),
-                name="ТестОпс Лого",
+                name="ТестОпс Лого.jpg",
                 attachment_type=allure.attachment_type.JPG
             )
         alex_person = Person('Alex')
@@ -33,7 +35,7 @@ def test_take_true_damage(damage, expected):
         assert alex_person.hp == 10
 
     # Добавляем шаг 3, с ожидаемым результатом
-    with allure.step('Шаг 3: Проверяем наносистся ли урон объекту.'):
+    with allure.step('Шаг 3: Проверяем наносится ли урон объекту.'):
         with allure.step('Шаг 3.1: Наносим чистый урон.'):
             if random.random() < 0.95:  # 95% шанс нанести урон
                 alex_person.take_true_damage(damage)
