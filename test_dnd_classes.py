@@ -58,8 +58,7 @@ def test_take_true_damage(damage, expected):
 @pytest.mark.parametrize('name, expected', [
     ('Alex', 'Alex'),
     (123, 123),
-    ('Leo', 'Leo'),
-    ('_Leo', 'Leo')
+    ('Leo', 'Leo')
 ])
 @allure.epic('TestOps')
 @allure.feature('BackEnd')

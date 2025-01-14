@@ -26,7 +26,7 @@ def test_add_description_text_01():
 @allure.description(description_text)
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
 def test_add_description_text_with_dynamic_01():
-    dymanic_text = 'Это динамическая часть описания, она меняеться от теста к тесту.\nТекст из теста 02.'
+    dymanic_text = 'Это динамическая часть описания, она меняеться от теста к тесту.\nТекст из теста 01.'
     allure.dynamic.description(description_text + f'\n{dymanic_text}')
     assert True
 
