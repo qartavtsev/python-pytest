@@ -15,6 +15,7 @@ description_text = 'Этот тест проверяет построение р
 @allure.story('Server')
 @allure.description(description_text)
 @allure.link('https://ru.wikipedia.org/wiki/Тригонометрические_функции', name='Тригонометрические_функции')
+@allure.title('Проверка вложения сгенерированных графиков.')
 @pytest.mark.parametrize('fucn_name,func_deal', [
     ('sin_x', np.sin),
     ('cos_x', np.cos)

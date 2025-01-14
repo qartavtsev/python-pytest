@@ -9,6 +9,7 @@ import pytest
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description('Этот тест проверяет корректность возможности предоставления информации о количество колес транспортного средства пользователю.')
+@allure.title('Проверка разнообразных вложений в шаги теста.')
 @pytest.mark.parametrize('parametr1, parametr2', [
     ('Car', 4),
     ('Bike', 2)

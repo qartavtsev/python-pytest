@@ -17,7 +17,7 @@ description_html = '''
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
-@allure.title('Проверка текстового описания.')
+@allure.title('Проверка текстового описания 01.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
 def test_description_text_01():
     assert True
@@ -26,6 +26,7 @@ def test_description_text_01():
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
+@allure.title('Проверка текстового описания с динамической частью 01.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
 def test_description_text_with_dynamic_01():
     dymanic_description_text = 'Это динамическая часть описания, она меняется от теста к тесту.\nТекст из теста 01.'
@@ -35,6 +36,7 @@ def test_description_text_with_dynamic_01():
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
+@allure.title('Проверка текстового описания 02.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
 def test_description_text_02():
     '''
@@ -49,6 +51,7 @@ def test_description_text_02():
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
+@allure.title('Проверка текстового описания с динамической частью 02.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
 def test_description_text_with_dynamic_02():
     '''
@@ -68,5 +71,6 @@ def test_description_text_with_dynamic_02():
 @allure.description_html(description_html)
 @allure.title('Проверка HTML описания.')
 @allure.step('Шаг 1: Проверить есть ли описание в виде HTML у теста.')
+@allure.tag('Тэг')
 def test_description_html_01():
     assert True

@@ -16,6 +16,7 @@ ERROR_TYPES = [IndexError, ValueError, TypeError, KeyError]
 ])
 #@allure.step('Шаг: тест')
 @allure.description('Этот тест проверяет базовую функциональность системы.\nВ части получения чистого урона.')
+@allure.title('Проверка получения чистый урона персонажу.')
 def test_take_true_damage(damage, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг 1: Создание объекта класса персонаж с именем "Alex".'):
@@ -63,6 +64,7 @@ def test_take_true_damage(damage, expected):
 @allure.story('Server')
 #@allure.id('')
 @allure.description('Этот тест проверяет базовую функциональность системы.\nВ части корректности имени персонажа.')
+@allure.title('Проверка корректности имени персонажа.')
 def test_naming(name, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг 1: Создание персонажа с корректным именем.'):
