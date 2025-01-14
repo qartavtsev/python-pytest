@@ -7,9 +7,10 @@ import random
 
 # в данном примере будем тестировать динамические вложения разных типов в шаги ТестОпс
 
-@allure.epic("TestOps")
-@allure.feature("BackEnd")
-@allure.story("Server")
+@allure.epic('TestOps')
+@allure.feature('BackEnd')
+@allure.story('Server')
+@allure.description('Этот тест проверяет корректность возможности предоставления информации о количество колес транспортного средства пользователю.')
 @pytest.mark.parametrize('parametr1, parametr2', [
     ('Car', 4),
     ('Bike', 2)

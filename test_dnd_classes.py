@@ -16,14 +16,15 @@ ERROR_TYPES = [IndexError, ValueError, TypeError, KeyError]
     (3, 7),
     (4, 8), # 4th test already failed
 ])
-#@allure.step("Шаг: тест")
+#@allure.step('Шаг: тест')
+@allure.description('Этот тест проверяет базовую функциональность системы.\nВ части получения чистого урона.')
 def test_take_true_damage(damage, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг 1: Создание объекта класса персонаж с именем "Alex".'):
-        with open("img/logo.jpeg", "rb") as image_file:
+        with open('img/logo.jpeg', 'rb') as image_file:
             allure.attach(
                 image_file.read(),
-                name="ТестОпс Лого.jpg",
+                name='ТестОпс Лого.jpg',
                 attachment_type=allure.attachment_type.JPG
             )
         alex_person = Person('Alex')
@@ -60,24 +61,25 @@ def test_take_true_damage(damage, expected):
     ('Leo', 'Leo'),
     ('_Leo', 'Leo')
 ])
-@allure.epic("TestOps")
-@allure.feature("BackEnd")
-@allure.story("Server")
+@allure.epic('TestOps')
+@allure.feature('BackEnd')
+@allure.story('Server')
 #@allure.id('')
+@allure.description('Этот тест проверяет базовую функциональность системы.\nВ части корректности имени персонажа.')
 def test_naming(name, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг 1: Создание персонажа с корректным именем.'):
-        with open("img/logo.jpeg", "rb") as image_file:
+        with open('img/logo.jpeg', 'rb') as image_file:
             allure.attach(
                 image_file.read(),
-                name="ТестОпс Лого",
+                name='ТестОпс_Лого.jpg',
                 attachment_type=allure.attachment_type.JPG
             )
         alex_person = Person(name)
 
     # Добавляем шаг 2, с вложением текст
     with allure.step('Шаг 2: Проверяем корректность имени.'):
-        allure.attach(f'Создан объект {alex_person}.', name='Лог операции', attachment_type=allure.attachment_type.TEXT)
+        allure.attach(f'Создан объект {alex_person}.', name='Лог_операции.txt', attachment_type=allure.attachment_type.TEXT)
         assert alex_person.name == expected, f'Name Error: Неверное имя объекта {alex_person}.'
 
     # Добавляем шаг 3, проверяем тип данных в имени

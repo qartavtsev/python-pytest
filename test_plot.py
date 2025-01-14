@@ -7,9 +7,11 @@ import pytest
 
 # в данном примере будем тестировать генерацию графиков и добавление их в шаги ТестОпс
 
-@allure.epic("TestOps")
-@allure.feature("BackEnd")
-@allure.story("Server")
+@allure.epic('TestOps')
+@allure.feature('BackEnd')
+@allure.story('Server')
+@allure.description('Этот тест проверяет построение разных графиков.')
+@allure.link('https://ru.wikipedia.org/wiki/Тригонометрические_функции', name='Тригонометрические_функции')
 @pytest.mark.parametrize('fucn_name,func_deal', [
     ('sin_x', np.sin),
     ('cos_x', np.cos)
@@ -22,8 +24,10 @@ def test_plot_generator(fucn_name,func_deal):
         Ожидаемый результат: график построен.
         """
     allure.dynamic.description(description)
+
     # Динамическая ссылка
-    allure.dynamic.link("https://example.com/dynamic-link", name="Динамическая ссылка")
+
+    allure.dynamic.link(f'https://yandex.ru/search/?text={fucn_name}', name='Динамическая ссылка на поиск функции: {fucn_name}')
 
     with allure.step('Шаг 1: Генерируем данные для оси X.'):
         x = np.linspace(0, 2 * np.pi, 100)  # генерируем значения от 0 до 2π
@@ -33,7 +37,7 @@ def test_plot_generator(fucn_name,func_deal):
 
     with allure.step('Шаг 3: Строим график.'):
         plt.figure(figsize=(8, 6))
-        plt.plot(x, y, label=fucn_name, color="blue")
+        plt.plot(x, y, label=fucn_name, color='blue')
         plt.xlabel('Угол (радианы)')
         plt.ylabel('Значение')
         plt.axhline(0, color="black", linewidth=0.8, linestyle="--")
