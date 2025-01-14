@@ -41,7 +41,7 @@ def test_take_true_damage(damage, expected):
             allure.attach(f'Персонажу с именем {alex_person.name} нанесли урон {damage} и у него осталось {alex_person.hp} очков здоровья.',
                           name='Лог операции', attachment_type=allure.attachment_type.TEXT)
 
-            assert alex_person.hp == expected, f'Crit Error: Чистый урон не прошел, неизменяются данные объекта {alex_person}.'
+            assert alex_person.hp == expected, f'Crit Error: Чистый урон не прошел, не изменяются данные объекта {alex_person}.'
 
     with allure.step('Шаг 4: Шаг со случайной ошибкой'):
         # Вставляем случайную ошибку, это приведет к сломанному тесту
@@ -62,7 +62,7 @@ def test_take_true_damage(damage, expected):
 @allure.feature("BackEnd")
 @allure.story("Server")
 #@allure.id('')
-def test_nameing(name, expected):
+def test_naming(name, expected):
     # добавляем первый шаг, создание персонажа и проверяем что он создался
     with allure.step('Шаг 1: Создание персонажа с корректным именем.'):
         with open("img/logo.jpeg", "rb") as image_file:
@@ -85,8 +85,8 @@ def test_nameing(name, expected):
             assert result == str, f'Name Error: Имя должно быть строкой. Ожидали: str, получили: {result}'
         with allure.step('Шаг 3.2: Проверяем первый символ строки. Не должно бить подчеркивания или цифры.'):
             result = alex_person.name[0]
-            expected_result = '_'
-            assert result != expected_result, f'Name Error: На первом месте должна быть буква. Ожидали: не "{expected_result}", получили: "{result}"'
+            expected_result = expected[0]
+            assert result == expected_result, f'Name Error: На первом месте должна быть буква. Ожидали: не "{expected_result}", получили: "{result}"'
     with allure.step('Шаг 4: Шаг на везение. Генерация случайной ошибки.'):
         # Вставляем случайную ошибку, это приведет к сломанному тесту
         if random.random() < 0.2:  # 20% шанс на ошибку
