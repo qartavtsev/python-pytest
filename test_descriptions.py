@@ -17,6 +17,7 @@ description_html = '''
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
+@allure.title('Проверка текстового описания.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
 def test_description_text_01():
     assert True
@@ -65,6 +66,7 @@ def test_description_text_with_dynamic_02():
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description_html(description_html)
+@allure.title('Проверка HTML описания.')
 @allure.step('Шаг 1: Проверить есть ли описание в виде HTML у теста.')
 def test_description_html_01():
     assert True
