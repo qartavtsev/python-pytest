@@ -18,30 +18,30 @@ preconditions = 'Предусловие необходимое для выпол
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
-@allure.label('preconditions', preconditions)
+@allure.label('preconditions_info', preconditions)
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
-def test_add_description_text_01():
+def test_description_text_01():
     assert True
 
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description(description_text)
-@allure.label('preconditions', preconditions)
+@allure.label('preconditions_info', preconditions)
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
-def test_add_description_text_with_dynamic_01():
+def test_description_text_with_dynamic_01():
     dymanic_description_text = 'Это динамическая часть описания, она меняется от теста к тесту.\nТекст из теста 01.'
     allure.dynamic.description(description_text + f'\n{dymanic_description_text}')
     dymanic_preconditions_text = 'Это динамическая часть предусловия, она меняется от теста к тесту.\nТекст из теста 01.'
-    allure.dynamic.label("preconditions", preconditions + f'\n{dymanic_preconditions_text}')
+    allure.dynamic.label("preconditions_info", preconditions + f'\n{dymanic_preconditions_text}')
     assert True
 
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
-@allure.label('preconditions', preconditions)
+@allure.label('preconditions_info', preconditions)
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
-def test_add_description_text_02():
+def test_description_text_02():
     '''
     Это описание теста сделано без использования декоратора.
     Описание взято из закомментированных строк кода.
@@ -54,9 +54,9 @@ def test_add_description_text_02():
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
-@allure.label('preconditions', preconditions)
+@allure.label('preconditions_info', preconditions)
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста. Есть ли динамическая часть описания.')
-def test_add_description_text_with_dynamic_02():
+def test_description_text_with_dynamic_02():
     '''
     Это описание теста сделано без использования декоратора.
     Описание взято из закомментированных строк кода.
@@ -65,19 +65,19 @@ def test_add_description_text_with_dynamic_02():
      - шаг 2
     '''
     dymanic_description_text = 'Это динамическая часть описания, она меняется от теста к тесту.\nТекст из теста 02.'
-    allure.dynamic.description(test_add_description_text_with_dynamic_02.__doc__ + f'\n{dymanic_description_text}')
+    allure.dynamic.description(test_description_text_with_dynamic_02.__doc__ + f'\n{dymanic_description_text}')
 
     dymanic_preconditions_text = 'Это динамическая часть предусловия, она меняется от теста к тесту.\nТекст из теста 01.'
-    allure.dynamic.label("preconditions", preconditions + f'\n{dymanic_preconditions_text}')
+    allure.dynamic.label("preconditions_info", preconditions + f'\n{dymanic_preconditions_text}')
     assert True
 
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
 @allure.description_html(description_html)
-@allure.label('preconditions', preconditions)
+@allure.label('preconditions_info', preconditions)
 @allure.step('Шаг 1: Проверить есть ли описание в виде HTML у теста.')
-def test_add_description_html_01():
+def test_description_html_01():
     assert True
 
 
