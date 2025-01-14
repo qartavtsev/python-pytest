@@ -10,7 +10,7 @@ import pytest
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
-@allure.description('Этот тест проверяет построение разных графиков.')
+#@allure.description('Этот тест проверяет построение разных графиков.')
 @allure.description_html('<h1>Этот тест проверяет построение разных графиков.</h1'>)
 @allure.link('https://ru.wikipedia.org/wiki/Тригонометрические_функции', name='Тригонометрические_функции')
 @pytest.mark.parametrize('fucn_name,func_deal', [
