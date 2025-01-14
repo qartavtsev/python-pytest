@@ -44,7 +44,7 @@ def test_take_true_damage(damage, expected):
             allure.attach(f'Персонажу с именем {alex_person.name} нанесли урон {damage} и у него осталось {alex_person.hp} очков здоровья.',
                           name='Лог операции', attachment_type=allure.attachment_type.TEXT)
 
-            assert alex_person.hp == expected, f'Crit Error: Чистый урон не прошел, не изменяются данные объекта {alex_person}.'
+            assert alex_person.hp == expected, f'Crit Error: Чистый урон не прошел, или прошел некорректно. Параметры объекта {alex_person} не изменяются, или изменяются некорректно.'
 
     with allure.step('Шаг 4: Шаг со случайной ошибкой'):
         # Вставляем случайную ошибку, это приведет к сломанному тесту
