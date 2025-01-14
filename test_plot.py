@@ -7,11 +7,13 @@ import pytest
 
 # в данном примере будем тестировать генерацию графиков и добавление их в шаги ТестОпс
 
+# записываем описание теста в отдельную переменную, чтобы потом можно было добавить в нее динамическую часть
+description_text = 'Этот тест проверяет построение разных графиков.'
+
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
 @allure.story('Server')
-@allure.description('Этот тест проверяет построение разных графиков.')
-@allure.description_html('<h1>Этот тест проверяет построение разных графиков.</h1>')
+@allure.description(description_text)
 @allure.link('https://ru.wikipedia.org/wiki/Тригонометрические_функции', name='Тригонометрические_функции')
 @pytest.mark.parametrize('fucn_name,func_deal', [
     ('sin_x', np.sin),
@@ -24,7 +26,8 @@ def test_plot_generator(fucn_name,func_deal):
         В диапазоне от 0 до 2π.
         Ожидаемый результат: график построен.
         """
-    allure.dynamic.description(description)
+    allure.dynamic.description(description_text+
+                               f'\nДалее идет динамическая часть\n{description}')
 
     # Динамическая ссылка
 
