@@ -12,7 +12,7 @@ description_html = '''
     <li>Не нумерованный список, пункт 1</li>
     </ul>
         '''
-preconditions = 'Предусловие необходимое для выполнения теста.'
+preconditions = 'demo'
 
 @allure.epic('TestOps')
 @allure.feature('BackEnd')
@@ -32,8 +32,8 @@ def test_description_text_01():
 def test_description_text_with_dynamic_01():
     dymanic_description_text = 'Это динамическая часть описания, она меняется от теста к тесту.\nТекст из теста 01.'
     allure.dynamic.description(description_text + f'\n{dymanic_description_text}')
-    dymanic_preconditions_text = 'Это динамическая часть предусловия, она меняется от теста к тесту.\nТекст из теста 01.'
-    allure.dynamic.label("preconditions_info", preconditions + f'\n{dymanic_preconditions_text}')
+    dymanic_preconditions_text = 'dynamic'
+    allure.dynamic.label("preconditions_info", preconditions +'_'+ f'{dymanic_preconditions_text}')
     assert True
 
 @allure.epic('TestOps')
@@ -67,8 +67,8 @@ def test_description_text_with_dynamic_02():
     dymanic_description_text = 'Это динамическая часть описания, она меняется от теста к тесту.\nТекст из теста 02.'
     allure.dynamic.description(test_description_text_with_dynamic_02.__doc__ + f'\n{dymanic_description_text}')
 
-    dymanic_preconditions_text = 'Это динамическая часть предусловия, она меняется от теста к тесту.\nТекст из теста 01.'
-    allure.dynamic.label("preconditions_info", preconditions + f'\n{dymanic_preconditions_text}')
+    dymanic_preconditions_text = 'dynamic'
+    allure.dynamic.label("preconditions_info", preconditions +'_'+ f'{dymanic_preconditions_text}')
     assert True
 
 @allure.epic('TestOps')
@@ -81,3 +81,12 @@ def test_description_html_01():
     assert True
 
 
+
+@allure.epic('TestOps')
+@allure.feature('BackEnd')
+@allure.story('Server')
+@allure.description_html(description_html)
+@allure.label('CheckType', 'last')
+@allure.step('Шаг 1: Проверить есть ли поле CheckType с параметром last.')
+def test_сheckеype():
+    assert True
