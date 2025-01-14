@@ -88,5 +88,5 @@ def test_description_html_01():
 @allure.description_html(description_html)
 @allure.label('CheckType', 'last')
 @allure.step('Шаг 1: Проверить есть ли поле CheckType с параметром last.')
-def test_сheckеype():
+def test_сhecktype():
     assert True
