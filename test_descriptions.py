@@ -19,7 +19,6 @@ description_html = '''
 @allure.description(description_text)
 @allure.title('Проверка текстового описания 01.')
 @allure.step('Шаг 1: Проверить есть ли у теста описание в виде текста.')
-@allure.label()
 def test_description_text_01():
     assert True
 
