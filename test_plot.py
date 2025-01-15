@@ -31,7 +31,6 @@ def test_plot_generator(fucn_name,func_deal):
                                f'\nДалее идет динамическая часть\n{description}')
 
     # Динамическая ссылка
-
     allure.dynamic.link(f'https://yandex.ru/search/?text={fucn_name}', name='Динамическая ссылка на поиск функции: {fucn_name}')
 
     with allure.step('Шаг 1: Генерируем данные для оси X.'):
