@@ -39,12 +39,12 @@ def test_take_true_damage(damage, expected):
             if random.random() < 0.95:  # 95% шанс нанести урон
                 alex_person.take_true_damage(damage)
         # Добавляем шаг 3.2, проверка работы
-        with allure.step('Шаг 3.2: Проверяем действие'):
+        with allure.step('Шаг 3.2: Проверяем действие.'):
             allure.attach(f'Персонажу с именем {alex_person.name} нанесли урон {damage} и у него осталось {alex_person.hp} очков здоровья.',
                           name='Лог операции', attachment_type=allure.attachment_type.TEXT)
             assert alex_person.hp == expected, f'Crit Error: Чистый урон не прошел, или прошел некорректно. Параметры объекта {alex_person} не изменяются, или изменяются некорректно.'
     # Добавляем шаг 4, со случайной ошибкой
-    with allure.step('Шаг 4: Шаг со случайной ошибкой'):
+    with allure.step('Шаг 4: Шаг со случайной ошибкой.):
         # Вставляем случайную ошибку, это приведет к сломанному тесту
         if random.random() < 0.2:  # 20% шанс на ошибку
             error_type = random.choice(ERROR_TYPES)  # случайно выбираем тип ошибки
