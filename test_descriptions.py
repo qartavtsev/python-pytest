@@ -74,3 +74,45 @@ def test_description_text_with_dynamic_02():
 @allure.tag('Тэг')
 def test_description_html_01():
     assert True
+
+
+
+@allure.id("467")
+def test_test_21:
+    with allure.step("Зайти на портал"):
+        with allure.step("Открыть новую вкладку в режиме Incognito."):
+            pass
+    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
+        with allure.step("Expected Result"):
+            with allure.step("Открылась страница авторизации на портале"):
+                pass
+    with allure.step("123"):
+        pass
+    with allure.step(
+            "Ввести логин из таблицы параметров в соответствующее поле. Все символы логина должны быть в верхнем регистре."):
+        pass
+    with allure.step("Ввести пароль из таблицы параметров в соответствующее поле."):
+        pass
+    with allure.step("Нажать Продолжить."):
+        pass
+    with allure.step(
+            "Проверить под каким пользователем произошла авторизация, кликнув левой кнопкой мыши на аватарку пользователя в правом верхнем углу."):
+        pass
+    with allure.step("Перейти в раздел Все проекты кликнув по нему левой кнопкой мыши."):
+        pass
+    with allure.step("Просмотреть список доступных проектов."):
+        with allure.step("Expected Result"):
+            with allure.step("В списке доступных проектов есть соответствующий проект из таблицы параметров."):
+                pass
+            with allure.step("В списке доступных проектов отсутствует соответствующий проект из таблицы параметров."):
+                pass
+            with allure.step("В списке доступных проектов есть публичные проекты."):
+                pass
+    with allure.step("Перейти в соответствующий проект из таблицы параметров."):
+        pass
+    with allure.step("Перейти в меню настройки проекта."):
+        pass
+    with allure.step("Перейди в подраздел настроек доступ."):
+        pass
+    with allure.step("Убедится что у нужного пользователя уровень прав - владелец."):
+        pass
