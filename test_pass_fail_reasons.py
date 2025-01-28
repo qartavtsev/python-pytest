@@ -51,3 +51,6 @@ def test_fail_01():
 def test_broken_01():
     con = 1 /0
     assert con > 0, 'Не смогли поделить на ноль.'
+
+def test_some_new_test_01():
+    assert True
