@@ -70,7 +70,7 @@ def test_plot_generator(fucn_name,func_deal):
 def test_super_func():
     assert True
 
-@allure.manual()
+@allure.manual(True)
 @allure.id("431")
 def test_test_test():
     with allure.step("Перейти в раздел тест-кейсы."):
