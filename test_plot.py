@@ -11,7 +11,7 @@ import pytest
 description_text = 'Этот тест проверяет построение разных графиков.'
 
 @allure.epic('TestOps')
-@allure.feature('BackEnd')
+@allure.feature('UI')
 @allure.story('Server')
 @allure.description(description_text)
 @allure.link('https://ru.wikipedia.org/wiki/Тригонометрические_функции', name='Тригонометрические_функции')

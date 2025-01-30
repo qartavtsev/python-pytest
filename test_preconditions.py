@@ -3,7 +3,7 @@ import pytest
 
 # В данном тесте мы просто пишем в шаге, что это предусловие
 @allure.epic('TestOps')
-@allure.feature('BackEnd')
+@allure.feature('UI')
 @allure.story('Server')
 @allure.title('Предусловия в шагах теста')
 def test_with_preconditions_steps():
@@ -32,7 +32,7 @@ def prepare_data(request):
 # немного усложним декоратор параметром indirect=True, это нужно чтобы поочередно передавать данные в фикстуру
 @pytest.mark.parametrize('prepare_data', [('log1', 'pass1'), ('log2', 'pass2')], indirect=True)
 @allure.epic('TestOps')
-@allure.feature('BackEnd')
+@allure.feature('UI')
 @allure.story('Server')
 @allure.title('Предусловия через фикстуру.')
 # обратите внимание: в качестве аргумента функции передаем другую функцию-фикстуру
