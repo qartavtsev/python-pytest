@@ -66,3 +66,6 @@ def test_plot_generator(fucn_name,func_deal):
     with allure.step('Шаг 6: Закрываем график для освобождения памяти.'):
         # Закрываем график
         plt.close()
+
+def test_super_func():
+    assert True
