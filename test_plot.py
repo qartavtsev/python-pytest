@@ -97,6 +97,8 @@ def test_plot_generator(fucn_name,func_deal):
 #         pass
 
 @allure.title('Тест линка в другой проект.')
-@allure.label("Test 2", "512")
+@allure.label("Test", "512")
 def test_test_test():
+    with allure.step("Делаем линк."):
+        pass
     assert True
