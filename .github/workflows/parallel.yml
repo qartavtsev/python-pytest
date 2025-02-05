@@ -94,4 +94,5 @@ jobs:
       - name: Publish results to Allure TestOps
         if: always()
         run:  |
-          allurectl publish ${ALLURE_RESULTS} --endpoint ${ALLURE_ENDPOINT} --token ${ALLURE_TOKEN} --project ${ALLURE_PROJECT_ID}
+          allurectl upload ${ALLURE_RESULTS}
+          #--endpoint ${ALLURE_ENDPOINT} --token ${ALLURE_TOKEN} --project ${ALLURE_PROJECT_ID}
