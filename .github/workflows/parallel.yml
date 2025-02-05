@@ -103,8 +103,8 @@ jobs:
           ls -la ${ALLURE_RESULTS}
 
       # загружаем файлы в ТестОпс
-      - name: Publish results to Allure TestOps
-        if: always()
-        run:  |
-          allurectl upload ${ALLURE_RESULTS}
-          #--endpoint ${ALLURE_ENDPOINT} --token ${ALLURE_TOKEN} --project ${ALLURE_PROJECT_ID}
+      #- name: Publish results to Allure TestOps
+      #  if: always()
+      #  run:  |
+      #    allurectl upload ${ALLURE_RESULTS}
+      #    #--endpoint ${ALLURE_ENDPOINT} --token ${ALLURE_TOKEN} --project ${ALLURE_PROJECT_ID}
