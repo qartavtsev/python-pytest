@@ -9,9 +9,9 @@ env:
   ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
 
-
+# Триггеры для запуска workflow
 on:
-# Запускать workflow при пуше и пул реквестах в ветке main
+# пуш и пулл реквест
 #  push:
 #    branches:
 #      - main
@@ -19,7 +19,7 @@ on:
 #    branches:
 #      - main
      
-# для запуска вручную    
+# вручную    
   workflow_dispatch:
     inputs:
       ALLURE_JOB_RUN_ID:
@@ -76,7 +76,7 @@ jobs:
           allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
           
       - name: Run tests
-        run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
+        run: allurectl watch --pytest --alluredir=${ALLURE_RESULTS} --capture=no
         env:
           ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
           BROWSER: ${{ github.event.inputs.BROWSER}}
