@@ -75,6 +75,11 @@ jobs:
           allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
           allure-token: ${{ env.ALLURE_TOKEN }}
           allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
+
+      # создаем директорию для результатов
+      - name: Ensure allure-results directory exists
+        run: |
+          mkdir -p ${ALLURE_RESULTS}
           
       - name: Run tests in parallel
         run: |
