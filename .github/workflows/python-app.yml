@@ -49,17 +49,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
+      # подготовка окружения
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-          
+
+      # установка зависисомтей
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      
+
+      # отладочные шаги, для проверки работы с переменными
       - name: Debug environment variables
         run: |
           echo "ALLURE_ENDPOINT: $allure-endpoint"
@@ -67,14 +70,22 @@ jobs:
         env:
           allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
           allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
-          
+
+      # устанока allurectl (связующее звено с ТестОпс)
       - name: Install allurectl
         uses: allure-framework/setup-allurectl@v1
         with:
           allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
           allure-token: ${{ env.ALLURE_TOKEN }}
           allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
-          
+
+      # создаем директорию для результатов
+      - name: Ensure allure-results directory exists
+        run: |
+          mkdir -p ${ALLURE_RESULTS}
+
+      # запускаем тесты и сразу следим за выполнением
+      # отправляем данные в ТестОпс по мере поступления
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
         env:
@@ -82,4 +93,16 @@ jobs:
           BROWSER: ${{ github.event.inputs.BROWSER}}
           OS: ${{ github.event.inputs.OS}}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-          ALLURE_RESULTS: ${ALLURE_RESULTS}
+
+      # проверяем если файлы с отчетами
+      - name: Check allure-results directory
+        if: always()
+        run: |
+          ls -la ${ALLURE_RESULTS}
+
+      # загружаем файлы в ТестОпс
+      #- name: Publish results to Allure TestOps
+      #  if: always()
+      #  run:  |
+      #    allurectl upload ${ALLURE_RESULTS}
+      #    #--endpoint ${ALLURE_ENDPOINT} --token ${ALLURE_TOKEN} --project ${ALLURE_PROJECT_ID}
