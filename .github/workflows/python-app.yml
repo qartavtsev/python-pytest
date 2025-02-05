@@ -76,7 +76,7 @@ jobs:
           allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
           
       - name: Run tests
-        run: allurectl watch --pytest --alluredir=${ALLURE_RESULTS} --capture=no
+        run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
         env:
           ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
           BROWSER: ${{ github.event.inputs.BROWSER}}
