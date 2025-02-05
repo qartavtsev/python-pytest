@@ -1,34 +1,13 @@
 name: Testops
 
 on:
-  # Запускать workflow на коммитах и pull request в ветку main
+  # Запускать workflow на коммитах и pull request в ветке main
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
-      
-  workflow_dispatch:
-    inputs:
-      ALLURE_JOB_RUN_ID:
-        description: ALLURE_JOB_RUN_ID - service parameter (leave blank)
-        required: false
-      ENDPOINT:
-        description: Endpoint
-        required: false
-        default: https://demo.qatools.cloud/
-      BROWSER:
-        description: Browser
-        required: false
-        default: Opera
-      OS:
-        description: OS
-        required: false
-        default: macOS 
-      ALLURE_USERNAME:
-        description: "ALLURE_USERNAME service parameter. Leave blank"
-        required: false
 
 env:
   ALLURE_ENDPOINT: https://demo.qatools.cloud/
