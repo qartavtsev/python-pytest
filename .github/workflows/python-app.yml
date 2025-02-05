@@ -13,7 +13,7 @@ on:
 # переменные окружения
 env:
   ALLURE_ENDPOINT: https://demo.qatools.cloud/
-  ALLURE_PROJECT_ID: '165'
+  ALLURE_PROJECT_ID: 165
   ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
   ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
@@ -39,9 +39,9 @@ jobs:
       - name: Install allurectl
         uses: allure-framework/setup-allurectl@v1
         with:
-          allure-endpoint: ${env.ALLURE_ENDPOINT}
-          allure-token: ${env.ALLURE_TOKEN}
-          allure-project-id: ${env.ALLURE_PROJECT_ID}
+          allure-endpoint: $ALLURE_ENDPOINT
+          allure-token: $ALLURE_TOKEN
+          allure-project-id: $ALLURE_PROJECT_ID
           
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
