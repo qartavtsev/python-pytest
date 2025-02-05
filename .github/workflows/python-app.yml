@@ -18,6 +18,7 @@ env:
   ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
 
+
 jobs:
   autotests: 
     name: Run tests
