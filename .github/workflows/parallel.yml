@@ -85,8 +85,11 @@ jobs:
           OS: ${{ github.event.inputs.OS }}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
           ALLURE_RESULTS: ${ALLURE_RESULTS}
-
+      
+      - name: Check allure-results directory
+        run: |
+          ls -la ${ALLURE_RESULTS}
+          
       - name: Publish results to Allure TestOps
         run:  |
-          ls -la ${ALLURE_RESULTS}
           allurectl publish ${ALLURE_RESULTS} --endpoint ${{ env.ALLURE_ENDPOINT }} --token ${{ secrets.ALLURE_TOKEN }} --project-id ${{ env.ALLURE_PROJECT_ID }}
