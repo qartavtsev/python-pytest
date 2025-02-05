@@ -87,9 +87,11 @@ jobs:
           ALLURE_RESULTS: ${ALLURE_RESULTS}
       
       - name: Check allure-results directory
+        if: always()
         run: |
           ls -la ${ALLURE_RESULTS}
           
       - name: Publish results to Allure TestOps
+        if: always()
         run:  |
           allurectl publish ${ALLURE_RESULTS} --endpoint ${{ env.ALLURE_ENDPOINT }} --token ${{ secrets.ALLURE_TOKEN }} --project-id ${{ env.ALLURE_PROJECT_ID }}
