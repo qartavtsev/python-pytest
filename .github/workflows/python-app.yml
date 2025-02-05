@@ -27,7 +27,7 @@ on:
       ENDPOINT:
         description: Endpoint
         required: false
-        default: ${{ ALLURE_ENDPOINT }}
+        default: ${{ env.ALLURE_ENDPOINT }}
       BROWSER:
         description: Browser
         required: false
