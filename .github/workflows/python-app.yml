@@ -1,7 +1,8 @@
+# Название workflow
 name: Testops
 
+# Запускать workflow при пуше и пул реквестах в ветке main
 on:
-  # Запускать workflow на коммитах и pull request в ветке main
   push:
     branches:
       - main
@@ -9,6 +10,7 @@ on:
     branches:
       - main
 
+# переменные окружения
 env:
   ALLURE_ENDPOINT: https://demo.qatools.cloud/
   ALLURE_PROJECT_ID: 165
@@ -36,9 +38,9 @@ jobs:
       - name: Install allurectl
         uses: allure-framework/setup-allurectl@v1
         with:
-          allure-endpoint: https://demo.qatools.cloud/
-          allure-token: ${{ secrets.ALLURE_TOKEN }}
-          allure-project-id: 165
+          allure-endpoint: ALLURE_ENDPOINT
+          allure-token: ALLURE_TOKEN
+          allure-project-id: ALLURE_PROJECT_ID
           
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
@@ -47,4 +49,4 @@ jobs:
           BROWSER: ${{ github.event.inputs.BROWSER}}
           OS: ${{ github.event.inputs.OS}}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-          ALLURE_RESULTS: "allure-results"
+          ALLURE_RESULTS: ALLURE_RESULTS
