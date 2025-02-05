@@ -88,4 +88,5 @@ jobs:
 
       - name: Publish results to Allure TestOps
         run:  |
+          ls -la ${ALLURE_RESULTS}
           allurectl publish ${ALLURE_RESULTS} --endpoint ${{ env.ALLURE_ENDPOINT }} --token ${{ secrets.ALLURE_TOKEN }} --project-id ${{ env.ALLURE_PROJECT_ID }}
