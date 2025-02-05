@@ -22,23 +22,25 @@ on:
   workflow_dispatch:
     inputs:
       ALLURE_JOB_RUN_ID:
-        description: ALLURE_JOB_RUN_ID - service parameter (leave blank)
+        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
         required: false
+        default: ""
       ENDPOINT:
-        description: Endpoint
+        description: "Endpoint"
         required: false
-        default: ${{ env.ALLURE_ENDPOINT }}
+        default: "https://demo.qatools.cloud/"
       BROWSER:
         description: Browser
         required: false
-        default: Opera
+        default: "Opera"
       OS:
         description: OS
         required: false
-        default: macOS 
+        default: "macOS" 
       ALLURE_USERNAME:
         description: "ALLURE_USERNAME service parameter. Leave blank"
         required: false
+        default: ""
 
 jobs:
   autotests: 
