@@ -35,13 +35,21 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      
+      - name: Debug environment variables
+        run: |
+          echo "ALLURE_ENDPOINT: $allure-endpoint"
+          echo "ALLURE_PROJECT_ID: $allure-project-id"
+        env:
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
           
       - name: Install allurectl
         uses: allure-framework/setup-allurectl@v1
         with:
-          allure-endpoint: $ALLURE_ENDPOINT
-          allure-token: $ALLURE_TOKEN
-          allure-project-id: $ALLURE_PROJECT_ID
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ env.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
           
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
