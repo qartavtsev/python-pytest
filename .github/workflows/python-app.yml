@@ -9,16 +9,17 @@ env:
   ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
 
-# Запускать workflow при пуше и пул реквестах в ветке main
+
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-      
-  # для запуска вручную    
+# Запускать workflow при пуше и пул реквестах в ветке main
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
+     
+# для запуска вручную    
   workflow_dispatch:
     inputs:
       ALLURE_JOB_RUN_ID:
