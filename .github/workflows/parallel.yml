@@ -1,3 +1,4 @@
+# Название workflow
 name: Testops_parallel
 
 # Переменные окружения
@@ -77,7 +78,7 @@ jobs:
           
       - name: Run tests in parallel
         run: |
-          pytest -n 4 --alluredir=${ALLURE_RESULTS} --capture=no  # Запуск 4 параллельных процессов
+          allurectl watch --pytest -n 4 --alluredir=${ALLURE_RESULTS} --capture=no  # Запуск 4 параллельных процессов
         env:
           ENDPOINT: ${{ github.event.inputs.ENDPOINT }}
           BROWSER: ${{ github.event.inputs.BROWSER }}
