@@ -1,4 +1,4 @@
-name: Testops
+name: Testops_parallel
 
 # Переменные окружения
 env:
