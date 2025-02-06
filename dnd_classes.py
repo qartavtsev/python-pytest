@@ -22,7 +22,7 @@ class Person:
         self.hp = self.hp - count / self.pdef
         pass
 
-    def test_take_ranged_damage(self, count, length):
+    def take_ranged_damage(self, count, length):
         # take ranged damage
         # length - between target and archer
         k = (60 - length) / 100

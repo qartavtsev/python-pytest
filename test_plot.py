@@ -95,10 +95,3 @@ def test_plot_generator(fucn_name,func_deal):
 #         pass
 #     with allure.step("Найти в списке запусков только что созданный запуск."):
 #         pass
-
-@allure.title('Тест линка в другой проект.')
-@allure.label("TestOps", "512")
-def test_test_test():
-    with allure.step("Делаем линк."):
-        pass
-    assert True
