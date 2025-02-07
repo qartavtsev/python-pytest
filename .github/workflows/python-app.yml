@@ -45,6 +45,7 @@ on:
       BRANCH:
         description: "Git branch (filled automatically)"
         required: true
+        default: ""
 
 jobs:
   autotests: 
@@ -53,7 +54,7 @@ jobs:
     
     # указываем ветку на которой запускаем воркфлоу
     env:
-      BRANCH: ${{ github.ref_name }}
+      BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
     
     steps:
       - uses: actions/checkout@v3
