@@ -74,4 +74,3 @@ def test_description_text_with_dynamic_02():
 @allure.tag('Тэг')
 def test_description_html_01():
     assert True
-
