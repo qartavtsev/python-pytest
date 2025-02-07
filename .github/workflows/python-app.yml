@@ -44,7 +44,7 @@ on:
         default: ""
       BRANCH:
         description: "Git branch (filled automatically)"
-        required: true
+        required: false
         default: ""
 
 jobs:
