@@ -42,6 +42,10 @@ on:
         description: "ALLURE_USERNAME service parameter. Leave blank"
         required: false
         default: ""
+      BRANCH:
+        description: "Git branch"
+        required: true
+        default: "${{ github.ref_name }}"
 
 jobs:
   autotests: 
