@@ -43,14 +43,18 @@ on:
         required: false
         default: ""
       BRANCH:
-        description: "Git branch"
+        description: "Git branch (filled automatically)"
         required: true
-        default: "${{ github.ref_name }}"
 
 jobs:
   autotests: 
     name: Run tests
     runs-on: ubuntu-latest
+    
+    # указываем ветку на которой запускаем воркфлоу
+    env:
+      BRANCH: ${{ github.ref_name }}
+    
     steps:
       - uses: actions/checkout@v3
 
