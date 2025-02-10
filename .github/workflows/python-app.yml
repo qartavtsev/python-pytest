@@ -22,10 +22,6 @@ on:
 # вручную    
   workflow_dispatch:
     inputs:
-      ALLURE_JOB_RUN_ID:
-        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
-        required: false
-        default: ""
       #ENDPOINT:
       #  description: "Endpoint"
       #  required: false
@@ -37,9 +33,13 @@ on:
       OS:
         description: OS
         required: false
-        default: "macOS" 
+        default: "macOS"
+      ALLURE_JOB_RUN_ID:
+        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
+        required: false
+        default: ""
       ALLURE_USERNAME:
-        description: "ALLURE_USERNAME service parameter. Leave blank"
+        description: "ALLURE_USERNAME - service parameter (leave blank)"
         required: false
         default: ""
       #BRANCH:
