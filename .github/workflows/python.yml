@@ -1,5 +1,5 @@
 # Название workflow
-name: Testops
+name: testops_python
 
 # переменные окружения
 env:
