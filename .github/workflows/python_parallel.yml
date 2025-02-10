@@ -70,8 +70,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
+          pip install -r requirements.txt 
+          # для распараллеливания тестов нужен pytest-xdist в  requirements.txt
       # отладочные шаги, для проверки работы с переменными
       - name: Debug environment variables
         run: |
