@@ -26,10 +26,10 @@ on:
         description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
         required: false
         default: ""
-      ENDPOINT:
-        description: "Endpoint"
-        required: false
-        default: "https://demo.qatools.cloud/"
+      #ENDPOINT:
+      #  description: "Endpoint"
+      #  required: false
+      #  default: "https://demo.qatools.cloud/"
       BROWSER:
         description: Browser
         required: false
@@ -53,9 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     
     # указываем ветку на которой запускаем воркфлоу
-    env:
+    #env:
       #BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
-      BRANCH: ${{ github.ref_name }}
+    #  BRANCH: ${{ github.ref_name }}
     
     steps:
       - uses: actions/checkout@v3
@@ -99,7 +99,9 @@ jobs:
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
         env:
-          ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
+          BRANCH: ${{ github.ref_name }}
+          #ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
+          ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
           BROWSER: ${{ github.event.inputs.BROWSER}}
           OS: ${{ github.event.inputs.OS}}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
