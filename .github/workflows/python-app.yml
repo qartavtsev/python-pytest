@@ -29,19 +29,19 @@ on:
       BROWSER:
         description: Browser
         required: false
-        default: "Opera"
+        default: "OperaGX"
       OS:
         description: OS
         required: false
-        default: "macOS"
-      ALLURE_JOB_RUN_ID:
-        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
-        required: false
-        default: ""
-      ALLURE_USERNAME:
-        description: "ALLURE_USERNAME - service parameter (leave blank)"
-        required: false
-        default: ""
+        default: "Win_11"
+      #ALLURE_JOB_RUN_ID:
+      #  description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
+      #  required: false
+      #  default: ""
+      #ALLURE_USERNAME:
+      #  description: "ALLURE_USERNAME - service parameter (leave blank)"
+      #  required: false
+      #  default: ""
       #BRANCH:
       #  description: "Git branch (filled automatically)"
       #  required: false
@@ -54,7 +54,7 @@ jobs:
     
     # указываем ветку на которой запускаем воркфлоу
     #env:
-      #BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
+    #  BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
     #  BRANCH: ${{ github.ref_name }}
     
     steps:
@@ -104,7 +104,7 @@ jobs:
           ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
           BROWSER: ${{ github.event.inputs.BROWSER}}
           OS: ${{ github.event.inputs.OS}}
-          ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+          #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
 
       # проверяем если файлы с отчетами
       - name: Check allure-results directory
