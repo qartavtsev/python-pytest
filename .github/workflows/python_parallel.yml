@@ -80,11 +80,11 @@ jobs:
       # отладочные шаги, для проверки работы с переменными
       - name: Debug environment variables
         run: |
-          echo "ALLURE_ENDPOINT: $allure-endpoint"
-          echo "ALLURE_PROJECT_ID: $allure-project-id"
+          echo "ALLURE_ENDPOINT: $allure_endpoint"
+          echo "ALLURE_PROJECT_ID: $allure_project_id"
         env:
-          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
-          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
+          allure_endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure_project_id: ${{ env.ALLURE_PROJECT_ID }}
 
       # устанока allurectl (связующее звено с ТестОпс)
       - name: Install allurectl
