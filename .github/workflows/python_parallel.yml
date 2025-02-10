@@ -1,7 +1,7 @@
 # Название workflow
-name: Testops_parallel
+name: Testops
 
-# Переменные окружения
+# переменные окружения
 env:
   ALLURE_ENDPOINT: https://demo.qatools.cloud/
   ALLURE_PROJECT_ID: 165
@@ -18,35 +18,45 @@ on:
 #  pull_request:
 #    branches:
 #      - main
-
-# вручную
+     
+# вручную    
   workflow_dispatch:
     inputs:
-      ALLURE_JOB_RUN_ID:
-        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
-        required: false
-        default: ""
-      ENDPOINT:
-        description: "Endpoint"
-        required: false
-        default: "https://demo.qatools.cloud/"
+      #ENDPOINT:
+      #  description: "Endpoint"
+      #  required: false
+      #  default: "https://demo.qatools.cloud/"
       BROWSER:
-        description: "Browser"
+        description: Browser
         required: false
-        default: "Opera"
+        default: "OperaGX"
       OS:
-        description: "OS"
+        description: OS
         required: false
-        default: "macOS"
-      ALLURE_USERNAME:
-        description: "ALLURE_USERNAME service parameter. Leave blank"
-        required: false
-        default: ""
+        default: "Win_11"
+      #ALLURE_JOB_RUN_ID:
+      #  description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
+      #  required: false
+      #  default: ""
+      #ALLURE_USERNAME:
+      #  description: "ALLURE_USERNAME - service parameter (leave blank)"
+      #  required: false
+      #  default: ""
+      #BRANCH:
+      #  description: "Git branch (filled automatically)"
+      #  required: false
+      #  default: ""
 
 jobs:
-  autotests:
+  autotests: 
     name: Run tests
     runs-on: ubuntu-latest
+    
+    # указываем ветку на которой запускаем воркфлоу
+    #env:
+    #  BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
+    #  BRANCH: ${{ github.ref_name }}
+    
     steps:
       - uses: actions/checkout@v3
 
@@ -61,7 +71,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest-xdist  # Установка pytest-xdist для распараллеливания тестов
 
       # отладочные шаги, для проверки работы с переменными
       - name: Debug environment variables
@@ -85,17 +94,18 @@ jobs:
         run: |
           mkdir -p ${ALLURE_RESULTS}
 
-      # запускаем тесты параллельно и сразу следим за выполнением
+      # запускаем тесты и сразу следим за выполнением
       # отправляем данные в ТестОпс по мере поступления
-      - name: Run tests in parallel
-        run: |
-          allurectl watch -- pytest -n 4 --alluredir=${ALLURE_RESULTS} --capture=no  # Запуск 4 параллельных процессов
+      - name: Run tests
+        run: allurectl watch -- pytest -n 4 --alluredir=${ALLURE_RESULTS} --capture=no
         env:
-          ENDPOINT: ${{ github.event.inputs.ENDPOINT }}
-          BROWSER: ${{ github.event.inputs.BROWSER }}
-          OS: ${{ github.event.inputs.OS }}
-          ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-      
+          BRANCH: ${{ github.ref_name }}
+          #ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
+          ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
+          BROWSER: ${{ github.event.inputs.BROWSER}}
+          OS: ${{ github.event.inputs.OS}}
+          #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+
       # проверяем если файлы с отчетами
       - name: Check allure-results directory
         if: always()
