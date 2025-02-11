@@ -8,20 +8,24 @@ env:
   ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
   #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
+  BROWSER: ${{ inputs.BROWSER || 'OperaGX' }}
+  OS: ${{ inputs.OS || 'Win_11' }}
+  LAUNCH_TYPE: ${{ inputs.LAUNCH_TYPE || 'push' }}
+  BRANCH: ${{ github.ref_name }}
 
 # Триггеры для запуска workflow
 on:
 # по расписанию
-#  schedule:
-#    - cron: "0 */24 * * *"
+  schedule:
+    - cron: "0 5 * * *"
 
 # пуш и пулл реквест
-#  push:
-#    branches:
-#      - main
-#  pull_request:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
      
 # вручную    
   workflow_dispatch:
@@ -38,6 +42,10 @@ on:
         description: OS
         required: false
         default: "Win_11"
+      LAUNCH_TYPE:
+        description: LAUNCH_TYPE
+        required: false
+        default: "manual"
       #ALLURE_JOB_RUN_ID:
       #  description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
       #  required: false
@@ -102,13 +110,13 @@ jobs:
       # отправляем данные в ТестОпс по мере поступления
       - name: Run tests
         run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
-        env:
-          BRANCH: ${{ github.ref_name }}
-          #ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
-          ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
-          BROWSER: ${{ github.event.inputs.BROWSER}}
-          OS: ${{ github.event.inputs.OS}}
-          #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+        #env:
+        #  BRANCH: ${{ github.ref_name }}
+        #  #ENDPOINT: ${{ github.event.inputs.ENDPOINT}}
+        #  ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
+        #  BROWSER: ${{ github.event.inputs.BROWSER}}
+        #  OS: ${{ github.event.inputs.OS}}
+        #  #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
 
       # проверяем если файлы с отчетами
       - name: Check allure-results directory
