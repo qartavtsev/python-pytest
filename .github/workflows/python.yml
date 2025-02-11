@@ -117,7 +117,6 @@ jobs:
           BROWSER: ${{ github.event.inputs.BROWSER}}
           OS: ${{ github.event.inputs.OS}}
           ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-          ALLURE_RESULTS: "allure-results"
 
       # проверяем если файлы с отчетами
       - name: Check allure-results directory
