@@ -19,12 +19,12 @@ on:
     - cron: "0 5 * * *"
 
 # пуш и пулл реквест
-#  push:
-#    branches:
-#      - main
-#  pull_request:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
      
 # вручную    
   workflow_dispatch:
