@@ -10,7 +10,6 @@ env:
   ALLURE_RESULTS: "allure-results"
   BROWSER: ${{ inputs.BROWSER || 'OperaGX' }}
   OS: ${{ inputs.OS || 'Win_11' }}
-  #LAUNCH_TYPE: ${{ inputs.LAUNCH_TYPE || 'push' }}
   #BRANCH: ${{ github.ref_name }}
 
 # Триггеры для запуска workflow
@@ -42,10 +41,6 @@ on:
         description: OS
         required: false
         default: "Win_11"
-      #LAUNCH_TYPE:
-      #  description: LAUNCH_TYPE
-      #  required: false
-      #  default: "manual"
       ALLURE_JOB_RUN_ID:
         description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
         required: false
