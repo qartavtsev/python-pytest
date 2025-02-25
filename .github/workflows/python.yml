@@ -6,18 +6,17 @@ env:
   ALLURE_ENDPOINT: https://demo.qatools.cloud/
   ALLURE_PROJECT_ID: 165
   ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}
-  #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
   ALLURE_RESULTS: "allure-results"
   BROWSER: ${{ inputs.BROWSER || 'OperaGX' }}
   OS: ${{ inputs.OS || 'Win_11' }}
-  LAUNCH_TYPE: ${{ inputs.LAUNCH_TYPE || 'push' }}
   BRANCH: ${{ github.ref_name }}
 
 # Триггеры для запуска workflow
 on:
 # по расписанию
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 0 * * *"
 
 # пуш и пулл реквест
   push:
@@ -30,10 +29,6 @@ on:
 # вручную    
   workflow_dispatch:
     inputs:
-      #ENDPOINT:
-      #  description: "Endpoint"
-      #  required: false
-      #  default: "https://demo.qatools.cloud/"
       BROWSER:
         description: Browser
         required: false
@@ -42,32 +37,19 @@ on:
         description: OS
         required: false
         default: "Win_11"
-      LAUNCH_TYPE:
-        description: LAUNCH_TYPE
+      ALLURE_JOB_RUN_ID:
+        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
         required: false
-        default: "manual"
-      #ALLURE_JOB_RUN_ID:
-      #  description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
-      #  required: false
-      #  default: ""
-      #ALLURE_USERNAME:
-      #  description: "ALLURE_USERNAME - service parameter (leave blank)"
-      #  required: false
-      #  default: ""
-      #BRANCH:
-      #  description: "Git branch (filled automatically)"
-      #  required: false
-      #  default: ""
+        default: ""
+      ALLURE_USERNAME:
+        description: "ALLURE_USERNAME - service parameter (leave blank)"
+        required: false
+        default: ""
 
 jobs:
   autotests: 
     name: Run tests
     runs-on: ubuntu-latest
-    
-    # указываем ветку на которой запускаем воркфлоу
-    #env:
-    #  BRANCH: ${{ inputs.BRANCH != '' && inputs.BRANCH || github.ref_name }}
-    #  BRANCH: ${{ github.ref_name }}
     
     steps:
       - uses: actions/checkout@v3
@@ -116,7 +98,7 @@ jobs:
         #  ENDPOINT: ${{ env.ALLURE_ENDPOINT }}
         #  BROWSER: ${{ github.event.inputs.BROWSER}}
         #  OS: ${{ github.event.inputs.OS}}
-        #  #ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
+        #  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
 
       # проверяем если файлы с отчетами
       - name: Check allure-results directory
