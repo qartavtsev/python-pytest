@@ -10,7 +10,7 @@ import pytest
 # записываем описание теста в отдельную переменную, чтобы потом можно было добавить в нее динамическую часть
 description_text = 'Этот тест проверяет построение разных графиков.'
 
-@allure.label("Ytracker", "DEMO-6")
+@allure.label("Ytracker", "DEMO-7")
 @allure.epic('TestOps')
 @allure.feature('UI')
 @allure.story('Server')
