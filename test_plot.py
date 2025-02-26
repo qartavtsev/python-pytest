@@ -11,6 +11,7 @@ import pytest
 description_text = 'Этот тест проверяет построение разных графиков.'
 
 @allure.label("Ytracker", "DEMO-7")
+@allure.severity(allure.severity_level.CRITICAL)
 @allure.epic('TestOps')
 @allure.feature('UI')
 @allure.story('Server')
