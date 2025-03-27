@@ -8,7 +8,7 @@ import pytest
 @allure.epic('TestOps')
 @allure.feature('UI')
 @allure.story('Server')
-@allure.description('Этот тест проверяет корректность возможности предоставления информации о количество колес транспортного средства пользователю.')
+@allure.description('Этот тест проверяет корректность возможности предоставления информации о количестве колес транспортного средства пользователю.')
 @allure.title('Проверка разнообразных вложений в шаги теста.')
 @pytest.mark.parametrize('parametr1, parametr2', [
     ('Car', 4),
