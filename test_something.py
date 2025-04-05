@@ -31,3 +31,8 @@ def test_test_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
+@allure.manual(True)
+def test_02():
+    with allure.step("Демо на гейзенбаг."):
+        pass
+    pass
