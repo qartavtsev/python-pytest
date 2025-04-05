@@ -36,3 +36,19 @@ def test_02():
     with allure.step("Демо на гейзенбаг."):
         pass
     pass
+
+
+@allure.id("808")
+@allure.title("Проверка переключения на темную тему")
+@allure.label("owner", "Alex")
+def test_method():
+    with allure.step("Зайти на портал"):
+        pass
+    with allure.step("Перейти в меню пользователя"):
+        pass
+    with allure.step("Открыть настройки оформления"):
+        pass
+    with allure.step("Переключить тему оформления на темную"):
+        pass
+    with allure.step("Убедиться что интерфейс переключился на темную тему"):
+        pass
