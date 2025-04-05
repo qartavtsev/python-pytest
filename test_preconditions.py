@@ -43,3 +43,5 @@ def test_with_yield_fixture(prepare_data):
     with allure.step(f'Шаг 1: Ввести логин "{login}" и пароль "{password}" в соответствующие поля.'):
         assert True
     assert prepare_data[login] == password
+
+
