@@ -31,3 +31,18 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
+@allure.id("809")
+@allure.title("Проверка переключения на темную тему")
+@allure.label("owner", "Alex")
+def test_method():
+    with allure.step("Зайти на портал"):
+        pass
+    with allure.step("Перейти в меню пользователя"):
+        pass
+    with allure.step("Открыть настройки оформления"):
+        pass
+    with allure.step("Переключить тему оформления на темную"):
+        pass
+    with allure.step("Убедиться что интерфейс переключился на темную тему"):
+        pass
+
