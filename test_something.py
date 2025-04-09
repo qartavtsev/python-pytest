@@ -50,3 +50,4 @@ def test_dark_mode():
         pass
     with allure.step("Убедиться что интерфейс переключился на темную тему"):
         pass
+
