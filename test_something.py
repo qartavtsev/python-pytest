@@ -5,7 +5,7 @@ import pytest
 @allure.title('Запуск одного ручного теста.')
 @allure.manual(True)
 @allure.id("431")
-def test_test_test():
+def test_run_one_manual_test():
     with allure.step("Перейти в раздел тест-кейсы."):
         pass
     with allure.step("Найти ручной тест из таблицы."):
@@ -30,5 +30,4 @@ def test_test_test():
         pass
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
-
 
