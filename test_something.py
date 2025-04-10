@@ -36,8 +36,6 @@ def test_run_one_manual_test():
 @allure.title("Проверка переключения на темную тему")
 @allure.label("owner", "Alex")
 def test_method():
-    Allure::label("Ytracker", "DEMO-11");
-    sharedStep144()
     with allure.step("Перейти в меню пользователя"):
         pass
     with allure.step("Открыть настройки оформления"):
