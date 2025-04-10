@@ -47,15 +47,4 @@ def test_method():
             pass
 
 
-@allure.step("Зайти на портал")
-def sharedStep144():
-    with allure.step("Открыть новую вкладку в режиме Incognito."):
-        pass
-    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
-        with allure.step("Expected Result"):
-            with allure.step("Открылась страница авторизации на портале"):
-                pass
-            with allure.step("Attachment [35]"):
-                pass
-
 
