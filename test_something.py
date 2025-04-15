@@ -33,7 +33,6 @@ def test_run_one_manual_test():
 
 
 @allure.id("848")
-@allure.manual(True)
 @allure.title("Проверка переключения на темную тему")
 @allure.label("owner", "Alex")
 def test_method():
