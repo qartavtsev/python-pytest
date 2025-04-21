@@ -32,20 +32,17 @@ def test_run_one_manual_test():
         pass
 
 
-
-@allure.id("858")
+@allure.id("859")
 @allure.title("Проверка переключения на темную тему")
 @allure.label("owner", "Alex")
 def test_method():
     sharedStep144()
-    with allure.step("Зайти в меню пользователя"):
+    with allure.step("Перейти в меню пользователя"):
         pass
     with allure.step("Открыть настройки оформления"):
         pass
     with allure.step("Переключить тему оформления на темную"):
-        with allure.step("Expected Result"):
-            with allure.step("Включилась темная тема"):
-                pass
+        pass
     with allure.step("Убедиться что интерфейс переключился на темную тему"):
         pass
 
