@@ -31,10 +31,10 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
-
-@allure.id("860")
-@allure.title("Проверка переключения на темную тему")
+@allure.id("861")
+@allure.title("Тест темной темы")
 @allure.label("owner", "Alex")
+@allure.epic("TestOps")
 def test_method():
     sharedStep144()
     with allure.step("Перейти в меню пользователя"):
@@ -57,4 +57,3 @@ def sharedStep144():
                 pass
             with allure.step("Attachment [35]"):
                 pass
-
