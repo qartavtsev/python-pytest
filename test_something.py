@@ -31,29 +31,3 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
-@allure.id("874")
-@allure.title("Проверка переключения на темную тему")
-@allure.label("owner", "Alex")
-def test_method():
-    sharedStep144()
-    with allure.step("Перейти в меню пользователя"):
-        pass
-    with allure.step("Открыть настройки оформления"):
-        pass
-    with allure.step("Переключить тему оформления на темную"):
-        pass
-    with allure.step("Убедиться что интерфейс переключился на темную тему"):
-        pass
-
-
-@allure.step("Зайти на портал")
-def sharedStep144():
-    with allure.step("Открыть новую вкладку в режиме Incognito."):
-        pass
-    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
-        with allure.step("Expected Result"):
-            with allure.step("Открылась страница авторизации на портале"):
-                pass
-            with allure.step("Attachment [35]"):
-                pass
-
