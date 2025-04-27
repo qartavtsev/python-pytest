@@ -5,7 +5,6 @@ import pytest
 @allure.title('Запуск одного ручного теста.')
 @allure.manual(True)
 @allure.id("431")
-@allure.testcase("520")
 def test_run_one_manual_test():
     with allure.step("Перейти в раздел тест-кейсы."):
         pass
