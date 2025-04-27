@@ -44,4 +44,16 @@ def test_with_yield_fixture(prepare_data):
         assert True
     assert prepare_data[login] == password
 
-
+# В данном тесте мы просто пишем в шаге, что это предусловие
+@allure.epic('TestOps')
+@allure.feature('UI')
+@allure.story('Server')
+@allure.title('Предусловия в поле описания')
+@allure.description('Предусловия для этого теста: сайт https://demo.qatools.cloud ')
+def test_with_preconditions_in_description():
+    with allure.step('Посмотреть предусловия и открыть главную страницу сайта.'):
+        assert True
+    with allure.step('Главная страница сайта открывается.'):
+        assert True
+    with allure.step('Ввести логин и пароль в соответствующие поля.'):
+        assert True
