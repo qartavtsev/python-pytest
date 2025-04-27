@@ -22,7 +22,7 @@ description_text = 'Этот тест проверяет построение р
     ('sin_x', np.sin),
     ('cos_x', np.cos)
         ])
-@allure.testcase( "https://demo.qatools.cloud/project/165/test-cases/520?treeId=0","520")
+@allure.testcase( "https://demo.qatools.cloud/project/165/test-cases/520?treeId=0")
 def test_plot_generator(fucn_name,func_deal):
     # Установка описания теста с динамическими переменными
     description = f"""
