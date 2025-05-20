@@ -31,32 +31,3 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
-@allure.id("429")
-@allure.tag("@_2. Module Tests", "Auth", "UI")
-@allure.title("Авторизация по логину и неверному паролю")
-@allure.label("owner", "Alex")
-@allure.epic("User Auth")
-def test_method():
-    sharedStep144()
-    with allure.step("Ввести логин из таблицы параметров в соответствующее поле."):
-        pass
-    with allure.step("Ввести пароль отличный от пароля из таблицы параметров в соответствующее поле."):
-        pass
-    with allure.step("Нажать Продолжить."):
-        with allure.step("Expected Result"):
-            with allure.step("Авторизация неуспешна."):
-                pass
-            with allure.step("Выводится сообщение о неверном пароле."):
-                pass
-
-
-@allure.step("Зайти на портал")
-def sharedStep144():
-    with allure.step("Открыть новую вкладку в режиме Incognito."):
-        pass
-    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
-        with allure.step("Expected Result"):
-            with allure.step("Открылась страница авторизации на портале"):
-                pass
-            with allure.step("Attachment [35]"):
-                pass
