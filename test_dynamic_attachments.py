@@ -32,6 +32,3 @@ def test_dynamic_att(parametr1, parametr2):
 
     with allure.step('Шаг 6: Создание вложения в виде списка ссылок ссылок.'):
         allure.attach('\n'.join(['https://qatools.ru/', 'https://demo.qatools.cloud/']), name='URL_List_example', attachment_type=allure.attachment_type.URI_LIST)
-
-    # with allure.step('Шаг 7: Создание вложения webm.'):
-    #     allure.attach.file(os.path.join('attachments', 'baby_deadpool.webm'), name='baby_deadpool.webm', attachment_type=allure.attachment_type.WEBM )
