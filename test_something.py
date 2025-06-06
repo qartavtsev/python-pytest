@@ -31,13 +31,3 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
-@allure.id("1820")
-@allure.title("Открыть меню пользователя")
-@allure.label("owner", "Alex")
-def test_method():
-    with allure.step("Зайти на портал"):
-        pass
-    with allure.step("В правом верхнем углу нажать на аватар пользователя"):
-        pass
-    with allure.step("Открылось меню пользователя"):
-        pass
