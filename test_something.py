@@ -30,36 +30,3 @@ def test_run_one_manual_test():
         pass
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
-
-@allure.id("1826")
-@allure.title("Проверка темной темы")
-@allure.label("owner", "Alex")
-def test_method():
-    sharedStep170()
-    with allure.step("Шаг 1"):
-        pass
-    sharedStep144()
-    with allure.step("Шаг 2"):
-        with allure.step("Expected Result"):
-            with allure.step("результат 1"):
-                pass
-
-
-@allure.step("Зайти на портал")
-def sharedStep144():
-    with allure.step("Открыть новую вкладку в режиме Incognito."):
-        pass
-    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
-        with allure.step("Expected Result"):
-            with allure.step("Открылась страница авторизации на портале"):
-                pass
-            with allure.step("Attachment [35]"):
-                pass
-
-
-@allure.step("Предусловие")
-def sharedStep170():
-    with allure.step("Приложение доступно по сети"):
-        pass
-    with allure.step("В приложении есть пользователь с логином и паролем из списка"):
-        pass
