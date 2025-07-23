@@ -79,3 +79,39 @@ def sharedStep144():
                 pass
             with allure.step("Attachment [35]"):
                 pass
+
+
+@allure.id("1828")
+@allure.title("Проверка переключения на темную тему")
+@allure.label("owner", "Alex")
+def test_method():
+    sharedStep144()
+    with allure.step("Перейти в меню пользователя"):
+        with allure.step("Expected Result"):
+            with allure.step("123"):
+                pass
+    with allure.step("Открыть настройки оформления"):
+        pass
+    with allure.step("Переключить тему оформления на темную"):
+        pass
+    with allure.step("Убедиться что интерфейс переключился на темную тему"):
+        with allure.step("Тема темная"):
+            with allure.step("Expected Result"):
+                with allure.step("кнопки светлые"):
+                    pass
+        with allure.step("Тема светлая"):
+            with allure.step("Expected Result"):
+                with allure.step("кнопки темные"):
+                    pass
+
+
+@allure.step("Зайти на портал")
+def sharedStep144():
+    with allure.step("Открыть новую вкладку в режиме Incognito."):
+        pass
+    with allure.step("Ввести в адресную строку адрес портала. Нажать Enter."):
+        with allure.step("Expected Result"):
+            with allure.step("Открылась страница авторизации на портале"):
+                pass
+            with allure.step("Attachment [35]"):
+                pass
