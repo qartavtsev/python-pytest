@@ -36,7 +36,6 @@ def test_run_one_manual_test():
 @allure.title("Проверка переключения на темную тему")
 @allure.label("owner", "Alex")
 def test_method():
-    Allure::label("suite", "test_something");
     sharedStep144()
     with allure.step("Перейти в меню пользователя"):
         with allure.step("Expected Result"):
