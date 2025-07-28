@@ -12,22 +12,38 @@ def test_with_preconditions_steps():
     with allure.step('Шаг 1: Ввести логин и пароль в соответствующие поля.'):
         assert True
 
-# Эта функция будет фикстурой для нашей тестовой функции
 @pytest.fixture
 def prepare_data(request):
-    # тестовая функция параметризована, чтобы передавать данные поочередно используем .param
     login, password = request.param
     print('Подготовка данных')
-    # из полученных данных собираем словарь {ключ: значение}
     data = {login: password}
+
     with allure.step('Получены логин и пароль для теста.'):
-        assert True
-    # yield используется для генераторов, мы не будем заморачиваться на эту тему.
-    # Для нас все просто: все что до него - предусловие, все что после него - постусловие.
-    yield data # передаем данные в тест
+        # Прикрепляем картинку предусловия
+        try:
+            with open('img/preconditions.jpg', 'rb') as image_file:
+                allure.attach(
+                    image_file.read(),
+                    name='Скриншот предусловия',
+                    attachment_type=allure.attachment_type.JPG
+                )
+        except FileNotFoundError:
+            print("Предупреждение: файл 'img/preconditions.jpg' не найден.")
+
+    yield data  # передаем данные в тест
+
     print('Очистка данных после теста')
     with allure.step('Логин и пароль для теста уничтожены.'):
-        assert True
+        # Прикрепляем картинку постусловия
+        try:
+            with open('img/postconditions.jpg', 'rb') as image_file:
+                allure.attach(
+                    image_file.read(),
+                    name='Скриншот постусловия',
+                    attachment_type=allure.attachment_type.JPG
+                )
+        except FileNotFoundError:
+            print("Предупреждение: файл 'img/postconditions.jpg' не найден.")
 
 # немного усложним декоратор параметром indirect=True, это нужно чтобы поочередно передавать данные в фикстуру
 @pytest.mark.parametrize('prepare_data', [('log1', 'pass1'), ('log2', 'pass2')], indirect=True)
