@@ -69,8 +69,8 @@ jobs:
       # отладочные шаги, для проверки работы с переменными
       - name: Debug environment variables
         run: |
-          echo "ALLURE_ENDPOINT: $endpoint"
-          echo "ALLURE_PROJECT_ID: $project_id"
+          echo "ENDPOINT: $endpoint"
+          echo "PROJECT_ID: $project_id"
         env:
           allure_endpoint: ${{ env.ENDPOINT }}
           allure_project_id: ${{ env.PROJECT_ID }}
