@@ -31,3 +31,4 @@ def test_run_one_manual_test():
     with allure.step("Найти в списке запусков только что созданный запуск."):
         pass
 
+
