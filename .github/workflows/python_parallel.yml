@@ -60,7 +60,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      # установка зависисомтей
+      # установка зависимостей
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -76,7 +76,7 @@ jobs:
           allure_endpoint: ${{ env.ENDPOINT }}
           allure_project_id: ${{ env.PROJECT_ID }}
 
-      # устанока allurectl (связующее звено с ТестОпс)
+      # установка allurectl (связующее звено с ТестОпс)
       - name: Install allurectl
         uses: allure-framework/setup-allurectl@v1
         with:
