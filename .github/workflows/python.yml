@@ -62,7 +62,7 @@ on:
 env:
   ALLURE_ENDPOINT: "https://demo.qatools.cloud/"                                                # Allure TestOps endpoint URL for submitting test results
   ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}                               # Allure TestOps job run ID for test results association
-  ALLURE_PROJECT_ID: "55"                                                                       # Allure TestOps project ID for submitting test results
+  ALLURE_PROJECT_ID: "386"                                                                      # Allure TestOps project ID for submitting test results
   ALLURE_RESULTS: "./allure-results"                                                            # Directory where test result files will be stored
   ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}                                                     # Authentication token for Allure TestOps (secured environment variable)
   ALLURE_LAUNCH_NAME_WITHOUT_TIME: "Python/Pytest - #${{ github.run_number }}"                  # Base Allure TestOps launch name (without timestamp)
