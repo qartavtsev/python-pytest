@@ -1,100 +1,128 @@
-# Название workflow
-name: testops_python
+name: Run
 
-# переменные окружения
-env:
-  ENDPOINT: https://demo.qatools.cloud/
-  PROJECT_ID: 165
-  TOKEN: ${{ secrets.TOKEN }}
-  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}
-  ALLURE_RESULTS: "allure-results"
-  BROWSER: ${{ inputs.BROWSER || 'OperaGX' }}
-  OS: ${{ inputs.OS || 'Win_11' }}
-  BRANCH: ${{ github.ref_name }}
-
-# Триггеры для запуска workflow
+# Pipeline execution rules
 on:
-# по расписанию
-  schedule:
-    - cron: "0 0 * * *"
-
-# пуш и пулл реквест
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-     
-# вручную    
-  workflow_dispatch:
+  # schedule:                      # Run the pipeline when triggered by a scheduled event
+  #   - cron: '0 0 * * *'          # Run the pipeline every day at midnight UTC
+  workflow_dispatch:               # Run the pipeline when triggered manually from the web UI
     inputs:
-      BROWSER:
-        description: Browser
-        required: false
-        default: "OperaGX"
-      OS:
-        description: OS
-        required: false
-        default: "Win_11"
       ALLURE_JOB_RUN_ID:
-        description: "ALLURE_JOB_RUN_ID - service parameter (leave blank)"
+        description: "ALLURE_JOB_RUN_ID: service parameter - leave blank"
         required: false
-        default: ""
       ALLURE_USERNAME:
-        description: "ALLURE_USERNAME - service parameter (leave blank)"
+        description: "ALLURE_USERNAME: service parameter - leave blank"
         required: false
-        default: ""
+      BRANCH:
+        description: "Specify the Git branch name"
+        required: false
+        default: ""                                                     # Default Git branch name
+      # 
+      # BROWSER configuration is defined in playwright.config.ts
+      # 
+      # BROWSER:
+      #   description: "Specify the browser"
+      #   required: false
+      #   default: ""                                                   # Default browser
+      #   type: choice
+      #   options:                                                      # Available options
+      #     - "Chrome"
+      #     - "Firefox"
+      #     - "Safari"
+      # 
+      HOST:
+        description: "Specify the environment host"
+        required: false
+        default: ""                                                     # Default environment host
+        type: choice
+        options:                                                        # Available options
+          - "demo.testops.cloud"
+          - "production.testops.cloud"
+          - "qa.testops.cloud"
+          - "testing.testops.cloud"
+          - "staging.testops.cloud"
+      #  
+      # OS configuration is defined in playwright.config.ts
+      # 
+      # OS:
+      #   description: "Specify the operating system"
+      #   required: false
+      #   default: ""                                                   # Default operating system
+      #   type: choice
+      #   options:                                                      # Available options
+      #     - "Linux"
+      #     - "macOS"
+      #     - "Windows"
+      # 
+      VERSION:
+        description: "Specify the software version under test"
+        required: false
+        default: ""                                                     # Default software version under test
 
+# Global environment variables
+env:
+  ALLURE_ENDPOINT: "https://demo.qatools.cloud/"                                                # Allure TestOps endpoint URL for submitting test results
+  ALLURE_JOB_RUN_ID: ${{ github.event.inputs.ALLURE_JOB_RUN_ID }}                               # Allure TestOps job run ID for test results association
+  ALLURE_PROJECT_ID: "55"                                                                       # Allure TestOps project ID for submitting test results
+  ALLURE_RESULTS: "./allure-results"                                                            # Directory where test result files will be stored
+  ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}                                                     # Authentication token for Allure TestOps (secured environment variable)
+  ALLURE_LAUNCH_NAME_WITHOUT_TIME: "Python/Pytest - #${{ github.run_number }}"                  # Base Allure TestOps launch name (without timestamp)
+  BRANCH: ${{ github.event.inputs.BRANCH }}                                                     # Git branch name specified for test execution
+  # BROWSER: ${{ github.event.inputs.BROWSER }}                                                 # Browser specified for test execution
+  HOST: ${{ github.event.inputs.HOST }}                                                         # Environment host specified for test execution
+  # OS: ${{ github.event.inputs.OS }}                                                           # Operating system specified for test execution
+  VERSION: ${{ github.event.inputs.VERSION }}                                                   # Software version under test specified
+
+# Jobs used in the pipeline
 jobs:
-  autotests: 
-    name: Run tests
+  # Job for timestamp parsing
+  timestamp:
+    name: timestamp_parsing
     runs-on: ubuntu-latest
-    
+    outputs:
+      parsed_timestamp: ${{ steps.set-output.outputs.PARSED_TIMESTAMP }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Set Timestamp
+        id: set-output
+        run: |
+          PARSED_TIMESTAMP=$(date -d "${{ github.event.head_commit.timestamp }} +3 hours" +"%Y.%m.%d - %H:%M:%S")
+          echo "PARSED_TIMESTAMP=$PARSED_TIMESTAMP" >> $GITHUB_OUTPUT
+        # Adjust the commit timestamp (+3 hours) and format it
+        # Export the parsed timestamp to GitHub Actions output for reuse
 
-      # подготовка окружения
-      - name: Set up Python
-        uses: actions/setup-python@v4
+  # Job for test execution
+  tests:
+    name: tests_execution
+    needs: timestamp
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # Checkout the code from the repository
+
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
-      # установка зависимостей
-      - name: Install dependencies
+      - name: Install and configure Python
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install allure-pytest pytest
 
-      # отладочные шаги, для проверки работы с переменными
-      - name: Debug environment variables
-        run: |
-          echo "ENDPOINT: $endpoint"
-          echo "PROJECT_ID: $project_id"
-        env:
-          allure_endpoint: ${{ env.ENDPOINT }}
-          allure_project_id: ${{ env.PROJECT_ID }}
-
-      # установка allurectl (связующее звено с ТестОпс)
-      - name: Install allurectl
+      - name: Install and configure allurectl using GitHub Actions
         uses: allure-framework/setup-allurectl@v1
         with:
-          allure-endpoint: ${{ env.ENDPOINT }}
-          allure-token: ${{ env.TOKEN }}
-          allure-project-id: ${{ env.PROJECT_ID }}
+          allure-endpoint: ${{ env.ALLURE_ENDPOINT }}
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: ${{ env.ALLURE_PROJECT_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # создаем директорию для результатов
       - name: Ensure allure-results directory exists
         run: |
           mkdir -p ${ALLURE_RESULTS}
 
-      # запускаем тесты и сразу следим за выполнением
-      # отправляем данные в ТестОпс по мере поступления
       - name: Run tests
-        run: allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
-
-      # проверяем если файлы с отчетами
-      - name: Check allure-results directory
-        if: always()
+        env:
+          ALLURE_LAUNCH_NAME: "${{ env.ALLURE_LAUNCH_NAME_WITHOUT_TIME }} - ${{ needs.timestamp.outputs.parsed_timestamp }}"
+        # Set the full Allure TestOps launch name (with timestamp)
         run: |
-          ls -la ${ALLURE_RESULTS}
+          allurectl watch -- pytest --alluredir=${ALLURE_RESULTS} --capture=no
+        # Execute tests and upload test results to Allure TestOps
