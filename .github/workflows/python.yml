@@ -31,11 +31,11 @@ on:
         default: ""                                                     # Default environment host
         type: choice
         options:                                                        # Available options
-          - "demo.testops.cloud"
-          - "production.testops.cloud"
-          - "qa.testops.cloud"
-          - "testing.testops.cloud"
-          - "staging.testops.cloud"
+          - "demo.qatools.cloud"
+          - "production.qatools.cloud"
+          - "qa.qatools.cloud"
+          - "testing.qatools.cloud"
+          - "staging.qatools.cloud"
       OS:
         description: "Specify the operating system"
         required: false
