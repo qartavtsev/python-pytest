@@ -2,7 +2,7 @@ import allure
 import pytest
 
 
-#@allure.id("2847")
+@allure.id("2847")
 @allure.title("Корректность расчёта скидки на товар")
 @allure.label("owner", "Елена")
 @allure.feature("Каталог")
@@ -27,7 +27,7 @@ def test_method_1():
             with allure.step("Никаких расхождений между каталогом и карточкой нет"):
                 pass
 
-#@allure.id("2834")
+@allure.id("2834")
 @allure.tag("regress")
 @allure.title("Переход по категориям каталога")
 @allure.label("owner", "Елена")
@@ -49,7 +49,7 @@ def test_method_2():
             with allure.step("Ошибок загрузки не возникает"):
                 pass
 
-#@allure.id("2844")
+@allure.id("2844")
 @allure.title("Сортировка товаров по популярности")
 @allure.label("owner", "Елена")
 @allure.feature("Каталог")
@@ -68,7 +68,7 @@ def test_method_3():
             with allure.step("Отображаемые значения рейтинга корректны и соответствуют данным в базе"):
                 pass
 
-#@allure.id("2840")
+@allure.id("2840")
 @allure.title("Применение нескольких фильтров одновременно")
 @allure.label("owner", "Елена")
 @allure.feature("Каталог")
@@ -95,7 +95,7 @@ def test_method_4():
             with allure.step("Если результатов нет — отображается понятное сообщение «Нет товаров по заданным параметрам»"):
                 pass
 
-#@allure.id("2820")
+@allure.id("2820")
 @allure.tag("regress", "smoke")
 @allure.title("Просмотр детальной информации по заказу")
 @allure.label("owner", "Дмитрий")
@@ -117,7 +117,7 @@ def test_method_5():
             with allure.step("Все данные совпадают с информацией, указанной при оформлении заказа"):
                 pass
 
-#@allure.id("2811")
+@allure.id("2811")
 @allure.tag("regress", "smoke")
 @allure.title("Успешное изменение данных профиля")
 @allure.label("owner", "Дмитрий")
@@ -143,7 +143,7 @@ def test_method_6():
             with allure.step("Новые данные сохраняются в профиле и отображаются после обновления страницы"):
                 pass
 
-#@allure.id("2816")
+@allure.id("2816")
 @allure.tag("regress")
 @allure.title("Удаление существующего адреса доставки")
 @allure.label("owner", "Дмитрий")
@@ -167,7 +167,7 @@ def test_method_7():
             with allure.step("Список адресов обновлён"):
                 pass
 
-#@allure.id("2803")
+@allure.id("2803")
 @allure.title("Авторизация с неверным паролем")
 @allure.label("owner", "Анна")
 @allure.feature("Регистрация и авторизация")
@@ -194,7 +194,7 @@ def test_method_8():
             with allure.step("Сессия не создается, пользователь остается на странице входа"):
                 pass
 
-#@allure.id("2807")
+@allure.id("2807")
 @allure.title("Валидация формата email при восстановлении пароля")
 @allure.label("owner", "Анна")
 @allure.feature("Регистрация и авторизация")
@@ -215,7 +215,7 @@ def test_method_9():
             with allure.step("Сообщение валидации исчезает; кнопка «Восстановить пароль» становится активной"):
                 pass
 
-#@allure.id("2799")
+@allure.id("2799")
 @allure.tag("regress")
 @allure.title("Валидация обязательных полей формы регистрации")
 @allure.label("owner", "Анна")
@@ -243,7 +243,7 @@ def test_method_10():
             with allure.step("Сообщения об ошибках исчезают; кнопка «Зарегистрироваться» становится доступной"):
                 pass
 
-#@allure.id("2851")
+@allure.id("2851")
 @allure.tag("regress", "smoke")
 @allure.title("Отображение статуса наличия товара на складе")
 @allure.label("owner", "Елена")
@@ -267,7 +267,7 @@ def test_method_11():
             with allure.step("Кнопка неактивна или заменена на «Сообщить о поступлении»"):
                 pass
 
-#@allure.id("2858")
+@allure.id("2858")
 @allure.tag("regress")
 @allure.title("Добавление отзыва авторизованным пользователем")
 @allure.label("owner", "Елена")
@@ -291,7 +291,7 @@ def test_method_12():
             with allure.step("Средний рейтинг обновляется с учётом нового отзыва (если реализовано)"):
                 pass
 
-#@allure.id("2855")
+@allure.id("2855")
 @allure.title("Возможность поставить оценку авторизованным пользователем")
 @allure.label("owner", "Елена")
 @allure.feature("Товар")
@@ -314,7 +314,7 @@ def test_method_13():
             with allure.step("Повторная оценка недоступна или заменяет предыдущую (в зависимости от логики)"):
                 pass
 
-#@allure.id("2824")
+@allure.id("2824")
 @allure.tag("regress")
 @allure.title("Отправка письма при смене пароля")
 @allure.label("owner", "Дмитрий")
@@ -340,7 +340,7 @@ def test_method_14():
             with allure.step("Конфиденциальные данные (полный пароль) не раскрываются"):
                 pass
 
-#@allure.id("2832")
+@allure.id("2832")
 @allure.title("Сохранение настроек уведомлений после выхода из аккаунта")
 @allure.label("owner", "Дмитрий")
 @allure.feature("Уведомления")
@@ -365,7 +365,7 @@ def test_method_15():
             with allure.step("Переключатели отображают актуальные значения, соответствующие последнему состоянию"):
                 pass
 
-#@allure.id("2828")
+@allure.id("2828")
 @allure.tag("regress", "smoke")
 @allure.title("Отображение системного уведомления об ошибке")
 @allure.label("owner", "Дмитрий")
