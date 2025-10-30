@@ -16,19 +16,15 @@ on:
         description: "Specify the Git branch name"
         required: false
         default: ""                                                     # Default Git branch name
-      # 
-      # BROWSER configuration is defined in playwright.config.ts
-      # 
-      # BROWSER:
-      #   description: "Specify the browser"
-      #   required: false
-      #   default: ""                                                   # Default browser
-      #   type: choice
-      #   options:                                                      # Available options
-      #     - "Chrome"
-      #     - "Firefox"
-      #     - "Safari"
-      # 
+      BROWSER:
+        description: "Specify the browser"
+        required: false
+        default: ""                                                   # Default browser
+        type: choice
+        options:                                                      # Available options
+          - "Chrome"
+          - "Firefox"
+          - "Safari"
       HOST:
         description: "Specify the environment host"
         required: false
@@ -40,19 +36,15 @@ on:
           - "qa.testops.cloud"
           - "testing.testops.cloud"
           - "staging.testops.cloud"
-      #  
-      # OS configuration is defined in playwright.config.ts
-      # 
-      # OS:
-      #   description: "Specify the operating system"
-      #   required: false
-      #   default: ""                                                   # Default operating system
-      #   type: choice
-      #   options:                                                      # Available options
-      #     - "Linux"
-      #     - "macOS"
-      #     - "Windows"
-      # 
+      OS:
+        description: "Specify the operating system"
+        required: false
+        default: ""                                                   # Default operating system
+        type: choice
+        options:                                                      # Available options
+          - "Linux"
+          - "macOS"
+          - "Windows"
       VERSION:
         description: "Specify the software version under test"
         required: false
@@ -67,9 +59,9 @@ env:
   ALLURE_TOKEN: ${{ secrets.ALLURE_TOKEN }}                                                     # Authentication token for Allure TestOps (secured environment variable)
   ALLURE_LAUNCH_NAME_WITHOUT_TIME: "Python/Pytest - #${{ github.run_number }}"                  # Base Allure TestOps launch name (without timestamp)
   BRANCH: ${{ github.event.inputs.BRANCH }}                                                     # Git branch name specified for test execution
-  # BROWSER: ${{ github.event.inputs.BROWSER }}                                                 # Browser specified for test execution
+  BROWSER: ${{ github.event.inputs.BROWSER }}                                                 # Browser specified for test execution
   HOST: ${{ github.event.inputs.HOST }}                                                         # Environment host specified for test execution
-  # OS: ${{ github.event.inputs.OS }}                                                           # Operating system specified for test execution
+  OS: ${{ github.event.inputs.OS }}                                                           # Operating system specified for test execution
   VERSION: ${{ github.event.inputs.VERSION }}                                                   # Software version under test specified
 
 # Jobs used in the pipeline
